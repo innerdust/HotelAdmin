@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="myServiceViewModel"
+            type="com.example.hoteladmin.viewmodel.model.ServiceViewModel" />
+
+        <variable
+            name="myService"
+            type="com.example.hoteladmin.activities.ServiceActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="670dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="100dp"
+        android:orientation="vertical"
+        tools:context=".activities.ServiceActivity">
+
+        <EditText
+            android:id="@+id/service_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Service name"
+            android:inputType="text"
+            android:text="@={myServiceViewModel.nameService}"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/cost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Cost"
+            android:inputType="number"
+            android:text="@={myServiceViewModel.costService}"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/save_or_update_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{()->myServiceViewModel.saveOrUpdate()}"
+                android:text="@={myServiceViewModel.saveOrUpdateButtonText}"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/clear_all_or_delete_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{()->myServiceViewModel.clearOrDelete()}"
+                android:text="@={myServiceViewModel.clearAllOrDeleteButtonText}"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/prev_btn_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:text="Назад" />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/passport_recyclerView"
+            android:layout_width="364dp"
+            android:layout_height="176dp"
+            android:layout_margin="5dp" />
+    </LinearLayout>
+</layout>

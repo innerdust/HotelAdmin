@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="myCustomerViewModel"
+            type="com.example.hoteladmin.viewmodel.model.CustomerViewModel" />
+
+        <variable
+            name="myCustomer"
+            type="com.example.hoteladmin.activities.CustomerActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="383dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="100dp"
+        android:orientation="vertical"
+        tools:context=".activities.CustomerActivity">
+
+        <EditText
+            android:id="@+id/customer_fullname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Customer fullname"
+            android:inputType="textPersonName"
+            android:text="@={myCustomerViewModel.fullnameCustomer}"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/customer_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:text="@={myCustomerViewModel.phoneCustomer}"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/save_or_update_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{()->myCustomerViewModel.saveOrUpdate()}"
+                android:text="@={myCustomerViewModel.saveOrUpdateButtonText}"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/clear_all_or_delete_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{()->myCustomerViewModel.clearOrDelete()}"
+                android:text="@={myCustomerViewModel.clearAllOrDeleteButtonText}"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/prev_btn_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick5"
+                android:text="Назад" />
+
+
+            <Button
+                android:id="@+id/next_btn_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:text="Вперед" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/customer_recyclerView"
+            android:layout_width="370dp"
+            android:layout_height="170dp"
+            android:layout_margin="5dp" />
+    </LinearLayout>
+</layout>

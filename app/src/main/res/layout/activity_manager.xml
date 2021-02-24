@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="myManagerViewModel"
+            type="com.example.hoteladmin.viewmodel.model.ManagerViewModel" />
+
+        <variable
+            name="myManager"
+            type="com.example.hoteladmin.activities.ManagerActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="668dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="100dp"
+        android:orientation="vertical"
+        tools:context=".activities.ManagerActivity">
+
+        <EditText
+            android:id="@+id/fullname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Fullname"
+            android:inputType="textPersonName"
+            android:text="@={myManagerViewModel.fullnameManager}"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/man_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:ems="10"
+            android:hint="Man address"
+            android:inputType="textPersonName"
+            android:text="@={myManagerViewModel.addressManager}"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/save_or_update_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{()->myManagerViewModel.saveOrUpdate()}"
+                android:text="@={myManagerViewModel.saveOrUpdateButtonText}"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/clear_all_or_delete_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{()->myManagerViewModel.clearOrDelete()}"
+                android:text="@={myManagerViewModel.clearAllOrDeleteButtonText}"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/prev_btn_manager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick3"
+                android:text="Назад" />
+
+
+            <Button
+                android:id="@+id/next_btn_manager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:text="Вперед" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/manager_recyclerView"
+            android:layout_width="370dp"
+            android:layout_height="171dp"
+            android:layout_margin="5dp" />
+    </LinearLayout>
+</layout>
